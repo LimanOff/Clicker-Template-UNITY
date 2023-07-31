@@ -833,8 +833,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab54a9683dd91564bb9a1a121b4e90ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Counter: {fileID: 833617700}
-  ClickButton: {fileID: 588683261}
+  _counterTextPrefab: {fileID: 833617700}
+  _clickButtonPrefab: {fileID: 588683261}
 --- !u!1 &934190062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,8 +1298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a630899b2f547e4ca568eed60e3f281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _counter: {fileID: 945050373}
-  _counterDisplay: {fileID: 945050374}
+  _counterPrefab: {fileID: 945050373}
+  _counterDisplayPrefab: {fileID: 945050374}
 --- !u!1 &2087245878
 GameObject:
   m_ObjectHideFlags: 0

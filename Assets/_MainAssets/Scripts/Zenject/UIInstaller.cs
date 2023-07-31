@@ -5,12 +5,19 @@ using UnityEngine.UI;
 public class UIInstaller : MonoInstaller
 {
     [Header("GamePanel")]
-    public Text Counter;
-    public Button ClickButton;
+    [SerializeField] private Text _counterTextPrefab;
+    [SerializeField] private Button _clickButtonPrefab;
 
     public override void InstallBindings()
     {
-        Container.Bind<Text>().WithId("UI/Counter").FromInstance(Counter).AsSingle();
-        Container.Bind<Button>().WithId("UI/ClickButton").FromInstance(ClickButton).AsSingle();
+        Container.Bind<Text>()
+                 .WithId("UI/Counter")
+                 .FromInstance(_counterTextPrefab)
+                 .AsSingle();
+
+        Container.Bind<Button>()
+                 .WithId("UI/ClickButton")
+                 .FromInstance(_clickButtonPrefab)
+                 .AsSingle();
     }
 }
