@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [DisallowMultipleComponent]
-public class Counter : MonoBehaviour
+public class Counter : MonoBehaviour, ISaveable
 {
     public delegate void CountChangedHandler(ulong count);
     public event CountChangedHandler CountChanged;
