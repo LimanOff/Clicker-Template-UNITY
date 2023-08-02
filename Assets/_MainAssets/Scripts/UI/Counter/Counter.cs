@@ -5,13 +5,16 @@ using System.Collections;
 using System.Collections.Generic;
 
 [DisallowMultipleComponent]
-public class Counter : MonoBehaviour, ISaveable
+public class Counter : MonoBehaviour, ISaveable, ILoadable, IInitializable
 {
     public delegate void CountChangedHandler(ulong count);
     public event CountChangedHandler CountChanged;
 
     public delegate void CountMultiplierChangedHandler(ulong countMultiplier);
     public event CountMultiplierChangedHandler CountMultiplierChanged;
+
+    public delegate void UpgradeCostChangedHandler(ulong upgradeCost);
+    public event UpgradeCostChangedHandler UpgradeCostChanged;
 
     public delegate void DontHaveEnoughCountForUpgradeHandler(ulong difference);
     public event DontHaveEnoughCountForUpgradeHandler DontHaveEnoughCountForUpgrade;
@@ -24,16 +27,12 @@ public class Counter : MonoBehaviour, ISaveable
 
     public void Initialize()
     {
-        ulong countMultiplierStartValue = 1;
-        ulong upgradeCostStartValue = 2;
-
-        Count = YandexGame.savesData.Count;
-        CountMultiplier = YandexGame.savesData.CountMultiplier == 0 ? countMultiplierStartValue : YandexGame.savesData.CountMultiplier;
-        UpgradeCost = YandexGame.savesData.UpgradeCost == 0 ? upgradeCostStartValue : YandexGame.savesData.UpgradeCost; 
+        LoadData();       
         
         Debug.Log("<color=yellow>Counter</color> is <color=green>initialized</color>");
     }
 
+    [ContextMenu("SaveData")]
     public void SaveData()
     {
         YandexGame.savesData.Count = Count;
@@ -41,6 +40,21 @@ public class Counter : MonoBehaviour, ISaveable
         YandexGame.savesData.UpgradeCost = UpgradeCost;
         
         YandexGame.SaveProgress();
+    }
+
+    [ContextMenu("LoadData")]
+    public void LoadData()
+    {
+        ulong countMultiplierStartValue = 1;
+        ulong upgradeCostStartValue = 2;
+
+        Count = YandexGame.savesData.Count;
+        CountMultiplier = YandexGame.savesData.CountMultiplier == 0 ? countMultiplierStartValue : YandexGame.savesData.CountMultiplier;
+        UpgradeCost = YandexGame.savesData.UpgradeCost == 0 ? upgradeCostStartValue : YandexGame.savesData.UpgradeCost;
+
+        CountChanged?.Invoke(Count);
+        CountMultiplierChanged?.Invoke(CountMultiplier);
+        UpgradeCostChanged?.Invoke(UpgradeCost);
     }
 
     public void IncrementCounter()

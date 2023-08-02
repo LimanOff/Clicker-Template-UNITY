@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Counter))]
-public class CounterDisplay : MonoBehaviour
+public class CounterDisplay : MonoBehaviour, IInitializable
 {
     [Inject(Id = "UI/Counter")] private Text _displayCounter;
     
@@ -25,7 +25,7 @@ public class CounterDisplay : MonoBehaviour
     private string GetFormatCount(float number)
     {
         string output;
-        ulong[] thresholds = {1000, 1000000, 1000000000,1000000000000,1000000000000000};
+        ulong[] thresholds = {(ulong)1e3, (ulong)1e6, (ulong)1e9,(ulong)1e11,(ulong)1e14};
         char[] thresholds_suffixes = {'K','M','B','T','Q'};
 
 
