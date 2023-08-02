@@ -189,7 +189,7 @@ namespace YG
         public static void SaveEditor()
         {
             Message("Save Editor");
-            FileStream fs = new FileStream(pathSaves, FileMode.Create);
+            FileStream fs = new FileStream(pathSaves, FileMode.OpenOrCreate);
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(fs, savesData);
             fs.Close();
