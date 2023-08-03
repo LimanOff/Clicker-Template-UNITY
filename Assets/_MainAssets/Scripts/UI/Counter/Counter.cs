@@ -21,13 +21,13 @@ public class Counter : MonoBehaviour, ISaveable, ILoadable, IInitializable
 
     [field: SerializeField] public ulong Count {get; private set;}
 
-    public ulong CountMultiplier {get; private set;}
+    [field: SerializeField] public ulong CountMultiplier {get; private set;}
 
-    public ulong UpgradeCost {get; private set;}
+    [field: SerializeField] public ulong UpgradeCost {get; private set;}
 
     public void Initialize()
     {
-        LoadData();       
+        LoadData();
         
         Debug.Log("<color=yellow>Counter</color> is <color=green>initialized</color>");
     }
@@ -46,7 +46,7 @@ public class Counter : MonoBehaviour, ISaveable, ILoadable, IInitializable
     public void LoadData()
     {
         ulong countMultiplierStartValue = 1;
-        ulong upgradeCostStartValue = 2;
+        ulong upgradeCostStartValue = 50;
 
         Count = YandexGame.savesData.Count;
         CountMultiplier = YandexGame.savesData.CountMultiplier == 0 ? countMultiplierStartValue : YandexGame.savesData.CountMultiplier;
@@ -68,10 +68,11 @@ public class Counter : MonoBehaviour, ISaveable, ILoadable, IInitializable
     {
         if(Count >= UpgradeCost)
         {
+            Count -= UpgradeCost;
             CountMultiplier *= 2;
             UpgradeCost *= 2;
-            Count -= UpgradeCost;
 
+            CountChanged?.Invoke(Count);
             CountMultiplierChanged?.Invoke(CountMultiplier);
         }
         else
