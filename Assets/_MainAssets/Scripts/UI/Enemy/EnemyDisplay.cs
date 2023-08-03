@@ -27,7 +27,13 @@ public class EnemyDisplay : MonoBehaviour, IInitializable
         GetEnemy();
 
         _counter.CountChanged += ReduceHealthSliderValue;
-        _enemyKeeper.NoMoreEnemies += () => _counter.CountChanged -= ReduceHealthSliderValue; 
+
+        _enemyKeeper.NoMoreEnemies += () =>
+        {
+            _counter.CountChanged -= ReduceHealthSliderValue;
+            _healthSlider.gameObject.SetActive(false);
+        };
+
         EnemyKilled += GetEnemy;
         
         Debug.Log("<color=yellow>EnemyDisplay</color> is <color=green>Initialize</color>");
