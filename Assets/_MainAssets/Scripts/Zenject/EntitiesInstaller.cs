@@ -6,9 +6,10 @@ public class EntitiesInstaller : MonoInstaller
     [SerializeField] private Counter _counterPrefab;
     [SerializeField] private CounterDisplay _counterDisplayPrefab;
 
+    [Space]
+    [Header("Enemy")]
     [SerializeField] private EnemyKeeper _enemyGiverPrefab;
     [SerializeField] private EnemyDisplay _enemyDisplayPrefab;
-    [SerializeField] private EnemySaver _enemySaverPrefab;
 
     public override void InstallBindings()
     {
@@ -25,6 +26,7 @@ public class EntitiesInstaller : MonoInstaller
         Container.Bind<CounterDisplay>()
                  .FromInstance(_counterDisplayPrefab)
                  .AsSingle();
+        
     }
 
     private void BindEnemy()
@@ -38,7 +40,7 @@ public class EntitiesInstaller : MonoInstaller
                  .AsSingle();
 
         Container.Bind<EnemySaver>()
-                 .FromInstance(_enemySaverPrefab)
-                 .AsSingle();
+                 .AsSingle()
+                 .NonLazy();
     }
 }

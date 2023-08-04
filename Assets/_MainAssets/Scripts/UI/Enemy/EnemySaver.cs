@@ -4,34 +4,24 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class EnemySaver : MonoBehaviour, ISaveable, ILoadable, IInitializable
+public class EnemySaver : ISaveable, ILoadable, IInitializable
 {
     private List<EnemyData> _allEnemiesSO;
     private List<SerializableEnemy> _serializableEnemies;
     private EnemyKeeper _enemyKeeper;
-    private EnemyDisplay _enemyDisplay;
 
     [Inject]
-    private void Construct(EnemyKeeper enemyKeeper, EnemyDisplay enemyDisplay)
+    public EnemySaver(EnemyKeeper enemyKeeper)
     {
         _enemyKeeper = enemyKeeper;
-        _enemyDisplay = enemyDisplay;
     }
 
     public void Initialize()
     {
         _allEnemiesSO = FindAllEnemiesSOInstances();
         LoadData();
-        
-        Debug.Log("<color=yellow>EnemySaver</color> is <color=green>Initialize</color>");
     }
     
-    private void OnDestroy()
-    {
-        _enemyDisplay.EnemyKilled -= SaveData;
-    }
-    
-    [ContextMenu("SaveData")]
     public void SaveData()
     {
         YandexGame.savesData.Enemies = SerializeEnemies(_enemyKeeper.GetAllEnemies());
@@ -39,7 +29,6 @@ public class EnemySaver : MonoBehaviour, ISaveable, ILoadable, IInitializable
         YandexGame.SaveProgress();
     }
 
-    [ContextMenu("LoadData")]
     public void LoadData()
     {
         if(YandexGame.savesData.Enemies != null)
@@ -89,7 +78,7 @@ public class EnemySaver : MonoBehaviour, ISaveable, ILoadable, IInitializable
             enemyTexture.LoadImage(serializeEnemy.AvatarEncode);
             Sprite enemySprite = Sprite.Create(enemyTexture,new Rect(0, 0, enemyTexture.width, enemyTexture.height), new Vector2(0.5f,0.5f));
 
-            EnemyData enemyData = new EnemyData()
+            EnemyData enemyData = new()
             {
                 Name = serializeEnemy.Name,
 
@@ -99,7 +88,7 @@ public class EnemySaver : MonoBehaviour, ISaveable, ILoadable, IInitializable
                 Price = serializeEnemy.Price
             };
 
-            enemies.Add(_allEnemiesSO.Find(x => x.Name == enemyData.Name));
+            enemies.Add(_allEnemiesSO.Find(serializeEnemy => serializeEnemy.Name == enemyData.Name));
         }
 
         return enemies;
@@ -108,9 +97,9 @@ public class EnemySaver : MonoBehaviour, ISaveable, ILoadable, IInitializable
     private List<EnemyData> FindAllEnemiesSOInstances()
     {
         string[] guids = AssetDatabase.FindAssets("t:"+ typeof(EnemyData).Name);
-        List<EnemyData> enemyDataSOInstances = new List<EnemyData>(guids.Length);
+        var enemyDataSOInstances = new List<EnemyData>(guids.Length);
 
-        for(int index =0; index < guids.Length; index++)
+        for(int index = 0; index < guids.Length; index++)
         {
             string path = AssetDatabase.GUIDToAssetPath(guids[index]);
             enemyDataSOInstances.Add(AssetDatabase.LoadAssetAtPath<EnemyData>(path));

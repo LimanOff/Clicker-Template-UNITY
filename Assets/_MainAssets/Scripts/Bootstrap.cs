@@ -30,10 +30,13 @@ public class Bootstrap : MonoBehaviour
     private void InitializeComponents()
     {
         _counter.Initialize();
+        InitializeEnemy();        
         _counterDisplay.Initialize();
 
+    private void InitializeEnemy()
+    {
         _enemySaver.Initialize();
-        _enemyKeeper.Initialize();
         _enemyDisplay.Initialize();
+        _enemyKeeper.Initialize();
     }
 }

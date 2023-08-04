@@ -8,9 +8,6 @@ public class EnemyKeeper : MonoBehaviour, IInitializable
     public event NoMoreEnemiesHandler NoMoreEnemies;
 
     private EnemyDisplay _enemyDisplay;
-    private EnemySaver _enemySaver;
-
-    private bool _wasPreviousEnemyKilled;
 
     [SerializeField] private List<EnemyData> _enemies;
 
@@ -23,7 +20,6 @@ public class EnemyKeeper : MonoBehaviour, IInitializable
     public void Initialize()
     {
         _enemyDisplay.EnemyKilled += RemoveKilledEnemy;
-        Debug.Log("<color=yellow>EnemyKeeper</color> is <color=green>Initialize</color>");
     }
 
     private void OnDestroy()
@@ -44,13 +40,8 @@ public class EnemyKeeper : MonoBehaviour, IInitializable
 
     public EnemyData GetEnemy()
     {
-        if(_enemies.Count != 0)
-        {
-            EnemyData enemy = _enemies[0];
-            return enemy;
-        }
-        NoMoreEnemies?.Invoke();
-        return null;
+        EnemyData enemy = _enemies[0];
+        return enemy;            
     }
 
     public List<EnemyData> GetAllEnemies() => _enemies;
@@ -62,6 +53,9 @@ public class EnemyKeeper : MonoBehaviour, IInitializable
 
     private void RemoveKilledEnemy()
     {
-        _enemies.RemoveAt(0);
+        if(_enemies.Count != 0)
+        {
+            _enemies.RemoveAt(0);
+        }
     }
 }

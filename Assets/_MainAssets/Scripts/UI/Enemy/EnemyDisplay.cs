@@ -9,13 +9,16 @@ public class EnemyDisplay : MonoBehaviour, IInitializable
     public event EnemyKilledHandler EnemyKilled;
 
     private Slider _healthSlider;
+
     private EnemyData _currentEnemy;
     private EnemyKeeper _enemyKeeper;
+
     [Inject(Id = "UI/ClickButtonImage")] private Image _enemyAvatar;
+
     private Counter _counter;
 
     [Inject]
-    private void Construct(Slider enemyLifeSlider, EnemyKeeper enemyGiver,Counter counter)
+    private void Construct(Slider enemyLifeSlider, EnemyKeeper enemyGiver, Counter counter)
     {
         _healthSlider = enemyLifeSlider;
         _enemyKeeper = enemyGiver;
@@ -28,21 +31,30 @@ public class EnemyDisplay : MonoBehaviour, IInitializable
 
         _counter.CountChanged += ReduceHealthSliderValue;
 
-        _enemyKeeper.NoMoreEnemies += () =>
-        {
-            _counter.CountChanged -= ReduceHealthSliderValue;
-            _healthSlider.gameObject.SetActive(false);
-        };
+        _enemyKeeper.NoMoreEnemies += HideHealthSlider;
 
         EnemyKilled += GetEnemy;
-        
-        Debug.Log("<color=yellow>EnemyDisplay</color> is <color=green>Initialize</color>");
     }
 
     private void OnDestroy()
     {
         _counter.CountChanged -= ReduceHealthSliderValue;
+
+        _enemyKeeper.NoMoreEnemies -= HideHealthSlider;
+
         EnemyKilled -= GetEnemy;
+    }
+
+    private void GetEnemy()
+    {
+        if(_enemyKeeper.CanGetEnemy())
+        {
+            _currentEnemy = _enemyKeeper.GetEnemy();
+
+            _healthSlider.maxValue = _currentEnemy.MaxHealth;
+            _healthSlider.value = _currentEnemy.MaxHealth;
+            _enemyAvatar.sprite = _currentEnemy.Avatar;
+        }
     }
 
     private void ReduceHealthSliderValue(ulong damage)
@@ -59,15 +71,9 @@ public class EnemyDisplay : MonoBehaviour, IInitializable
         }
     }
 
-    private void GetEnemy()
+    private void HideHealthSlider()
     {
-        if(_enemyKeeper.CanGetEnemy())
-        {
-            _currentEnemy = _enemyKeeper.GetEnemy();
-
-            _healthSlider.maxValue = _currentEnemy.MaxHealth;
-            _healthSlider.value = _currentEnemy.MaxHealth;
-            _enemyAvatar.sprite = _currentEnemy.Avatar;
-        }
+        _counter.CountChanged -= ReduceHealthSliderValue;
+        _healthSlider.gameObject.SetActive(false);
     }
 }
