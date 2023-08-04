@@ -2,7 +2,6 @@ using Zenject;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Counter))]
 public class CounterDisplay : MonoBehaviour, IInitializable
 {
     [Inject(Id = "UI/Counter")] private Text _displayCounter;
@@ -14,7 +13,6 @@ public class CounterDisplay : MonoBehaviour, IInitializable
         _counter.CountChanged += UpdateDisplayCounter;
 
         UpdateDisplayCounter(_counter.Count);
-        Debug.Log("<color=yellow>CounterDisplay</color> is <color=green>initialized</color>");
     }
 
     public void UpdateDisplayCounter(ulong count)

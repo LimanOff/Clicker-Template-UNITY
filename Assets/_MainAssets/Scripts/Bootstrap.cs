@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Bootstrap : MonoBehaviour
 {
-    [Inject] private Counter _counter;
+    [Inject] private CounterSaver _counterSaver;
+    [Inject] private CounterUpgrader _counterUpgrader;
     [Inject] private CounterDisplay _counterDisplay;
 
     [Inject] private EnemyDisplay _enemyDisplay;
@@ -18,7 +19,6 @@ public class Bootstrap : MonoBehaviour
         if(YandexGame.SDKEnabled)
         {
             InitializeComponents();
-            Debug.Log("<color=yellow>Bootstrap:</color> all components are <color=green>Initialized</color>");
         }
     }
 
@@ -29,9 +29,16 @@ public class Bootstrap : MonoBehaviour
 
     private void InitializeComponents()
     {
-        _counter.Initialize();
+        InitializeCounter();
         InitializeEnemy();        
+    }
+
+    private void InitializeCounter()
+    {
+        _counterSaver.Initialize();
+        _counterUpgrader.Initialize();
         _counterDisplay.Initialize();
+    }
 
     private void InitializeEnemy()
     {

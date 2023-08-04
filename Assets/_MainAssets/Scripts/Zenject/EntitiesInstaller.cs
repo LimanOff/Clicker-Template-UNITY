@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class EntitiesInstaller : MonoInstaller
 {
+    [Header("Counter")]
     [SerializeField] private Counter _counterPrefab;
+    [SerializeField] private CounterUpgrader _counterUpgraderPrefab;
     [SerializeField] private CounterDisplay _counterDisplayPrefab;
-
     [Space]
     [Header("Enemy")]
     [SerializeField] private EnemyKeeper _enemyGiverPrefab;
@@ -19,6 +20,14 @@ public class EntitiesInstaller : MonoInstaller
 
     private void BindCounter()
     {
+        Container.Bind<CounterSaver>()
+                 .AsSingle()
+                 .NonLazy();
+
+        Container.Bind<CounterUpgrader>()
+                 .FromInstance(_counterUpgraderPrefab)
+                 .AsSingle();
+
         Container.Bind<Counter>()
                  .FromInstance(_counterPrefab)
                  .AsSingle();
@@ -26,7 +35,6 @@ public class EntitiesInstaller : MonoInstaller
         Container.Bind<CounterDisplay>()
                  .FromInstance(_counterDisplayPrefab)
                  .AsSingle();
-        
     }
 
     private void BindEnemy()
