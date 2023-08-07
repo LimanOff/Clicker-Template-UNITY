@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: MisterY
   Avatar: {fileID: 21300000, guid: 950832395ec754ba48ab1cffa214cec0, type: 3}
+  Background: {fileID: 21300000, guid: 20fa79ba90ba5f040b39cd1aaae25e19, type: 3}
   MaxHealth: 1000
   Price: 0

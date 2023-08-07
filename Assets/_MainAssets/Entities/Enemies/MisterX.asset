@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: MisterX
   Avatar: {fileID: 21300000, guid: ba345f2f643d842459447c374943401d, type: 3}
+  Background: {fileID: 21300000, guid: 9924b1f06ad1b4f4ab99d8bb2f06523f, type: 3}
   MaxHealth: 100
   Price: 0

@@ -5,21 +5,34 @@ using System;
 public struct SerializableEnemy
 {
     public string Name;
-    public byte[] AvatarEncode;
-    public int AvatarWidth;
-    public int AvatarHeight;
+
+    public EnemySprite Avatar;
+    public EnemySprite Background;
+
     public ulong MaxHealth;
     public ulong Price;
 
-    public SerializableEnemy(string name, byte[] avatarEncode, int avatarHeight, int avatarWidth,ulong maxHealth, ulong price)
+    public SerializableEnemy(string name, EnemySprite avatar, EnemySprite background, ulong maxHealth, ulong price)
     {
         Name = name;
-
-        AvatarEncode = avatarEncode;
-        AvatarHeight = avatarHeight;
-        AvatarWidth = avatarWidth;
-
+        Avatar = avatar;
+        Background = background;
         MaxHealth = maxHealth;
         Price = price;
+    }
+
+    [Serializable]
+    public struct EnemySprite
+    {
+        public byte[] Encode;
+        public int Width;
+        public int Height;
+
+        public EnemySprite(byte[] encode, int width, int height)
+        {
+            Encode = encode;
+            Width = width;
+            Height = height;
+        }
     }
 }

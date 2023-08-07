@@ -44,15 +44,18 @@ public class EnemySaver : ISaveable, ILoadable, IInitializable
         for(int index = 0; index < serializeEnemies.Capacity; index++)
         {
             EnemyData enemyData = enemies[index];
-            Texture2D textureWithReadWriteAccess = enemyData.Avatar.texture.DuplicateTextureWithAllAccess();
+            Texture2D avatarTextureWithReadWriteAccess = enemyData.Avatar.texture.DuplicateTextureWithAllAccess();
+            Texture2D backgroundTextureWithReadWriteAcces = enemyData.Background.texture.DuplicateTextureWithAllAccess();
+
+            var avatar = new SerializableEnemy.EnemySprite(avatarTextureWithReadWriteAccess.EncodeToPNG(), enemyData.Avatar.texture.width, enemyData.Avatar.texture.height);
+            var background = new SerializableEnemy.EnemySprite(backgroundTextureWithReadWriteAcces.EncodeToPNG(), enemyData.Avatar.texture.width, enemyData.Avatar.texture.height);
 
             var serializableEnemy = new SerializableEnemy
             {
                 Name = enemyData.Name,
                 
-                AvatarEncode = textureWithReadWriteAccess.EncodeToPNG(),
-                AvatarHeight = enemyData.Avatar.texture.height,
-                AvatarWidth = enemyData.Avatar.texture.width,
+                Avatar = avatar,
+                Background = background,
 
                 MaxHealth = enemyData.MaxHealth,
                 Price = enemyData.Price
@@ -74,15 +77,19 @@ public class EnemySaver : ISaveable, ILoadable, IInitializable
         {
             SerializableEnemy serializeEnemy = serializeEnemies[index];
 
-            Texture2D enemyTexture = new Texture2D(serializeEnemy.AvatarHeight,serializeEnemy.AvatarWidth);
-            enemyTexture.LoadImage(serializeEnemy.AvatarEncode);
-            Sprite enemySprite = Sprite.Create(enemyTexture,new Rect(0, 0, enemyTexture.width, enemyTexture.height), new Vector2(0.5f,0.5f));
+            Texture2D enemyAvatarTexture = new Texture2D(serializeEnemy.Avatar.Height,serializeEnemy.Avatar.Width);
+            Texture2D enemyBackgroundTexture = new Texture2D(serializeEnemy.Background.Height,serializeEnemy.Background.Width);
+            enemyAvatarTexture.LoadImage(serializeEnemy.Avatar.Encode);
+            enemyBackgroundTexture.LoadImage(serializeEnemy.Background.Encode);
+            Sprite enemyAvatarSprite = Sprite.Create(enemyAvatarTexture,new Rect(0, 0, enemyAvatarTexture.width, enemyAvatarTexture.height), new Vector2(0.5f,0.5f));
+            Sprite enemyBackgroundSprite = Sprite.Create(enemyBackgroundTexture,new Rect(0, 0, enemyBackgroundTexture.width, enemyBackgroundTexture.height), new Vector2(0.5f,0.5f));
 
             EnemyData enemyData = new()
             {
                 Name = serializeEnemy.Name,
 
-                Avatar = enemySprite,
+                Avatar = enemyAvatarSprite,
+                Background = enemyBackgroundSprite,                
 
                 MaxHealth = serializeEnemy.MaxHealth,
                 Price = serializeEnemy.Price

@@ -10,6 +10,7 @@ public class UIInstaller : MonoInstaller
     [SerializeField] private Slider _enemyLifeSliderPrefab;
 
     [SerializeField] private Image _clickButtonSpritePrefab;
+    [SerializeField] private Image _enemyBackgroundImagePrefab;
 
     public override void InstallBindings()
     {
@@ -25,8 +26,11 @@ public class UIInstaller : MonoInstaller
 
         Container.Bind<Image>()
                  .WithId("UI/ClickButtonImage")
-                 .FromInstance(_clickButtonSpritePrefab)
-                 .AsSingle();
+                 .FromInstance(_clickButtonSpritePrefab);
+
+        Container.Bind<Image>()
+                 .WithId("UI/BackgroundImage")
+                 .FromInstance(_enemyBackgroundImagePrefab);
                  
         Container.Bind<Slider>()
                  .FromInstance(_enemyLifeSliderPrefab)

@@ -24,17 +24,11 @@ public class EntitiesInstaller : MonoInstaller
                  .AsSingle()
                  .NonLazy();
 
-        Container.Bind<CounterUpgrader>()
-                 .FromInstance(_counterUpgraderPrefab)
-                 .AsSingle();
+        Container.BindInstance(_counterUpgraderPrefab).AsSingle();
 
-        Container.Bind<Counter>()
-                 .FromInstance(_counterPrefab)
-                 .AsSingle();
+        Container.BindInstance(_counterPrefab).AsSingle();
 
-        Container.Bind<CounterDisplay>()
-                 .FromInstance(_counterDisplayPrefab)
-                 .AsSingle();
+        Container.BindInstance(_counterDisplayPrefab);
     }
 
     private void BindEnemy()

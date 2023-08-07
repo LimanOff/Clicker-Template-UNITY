@@ -14,6 +14,7 @@ public class EnemyDisplay : MonoBehaviour, IInitializable
     private EnemyKeeper _enemyKeeper;
 
     [Inject(Id = "UI/ClickButtonImage")] private Image _enemyAvatar;
+    [Inject(Id = "UI/BackgroundImage")] private Image _enemyBackground;
 
     private Counter _counter;
 
@@ -54,6 +55,7 @@ public class EnemyDisplay : MonoBehaviour, IInitializable
             _healthSlider.maxValue = _currentEnemy.MaxHealth;
             _healthSlider.value = _currentEnemy.MaxHealth;
             _enemyAvatar.sprite = _currentEnemy.Avatar;
+            _enemyBackground.sprite = _currentEnemy.Background;
         }
     }
 
