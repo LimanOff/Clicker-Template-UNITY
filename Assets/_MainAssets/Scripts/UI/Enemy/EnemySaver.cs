@@ -1,13 +1,11 @@
 using YG;
 using Zenject;
-using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
 
 public class EnemySaver : ISaveable, ILoadable, IInitializable
 {
     private List<EnemyData> _allEnemiesSO;
-    private List<SerializableEnemy> _serializableEnemies;
     private EnemyKeeper _enemyKeeper;
 
     [Inject]
@@ -18,7 +16,6 @@ public class EnemySaver : ISaveable, ILoadable, IInitializable
 
     public void Initialize()
     {
-        _allEnemiesSO = FindAllEnemiesSOInstances();
         LoadData();
     }
     
@@ -31,6 +28,8 @@ public class EnemySaver : ISaveable, ILoadable, IInitializable
 
     public void LoadData()
     {
+        _allEnemiesSO = _enemyKeeper.GetAllEnemies();
+
         if(YandexGame.savesData.Enemies != null)
         {
             _enemyKeeper.SetEnemies(DeserializeEnemies());
@@ -79,8 +78,10 @@ public class EnemySaver : ISaveable, ILoadable, IInitializable
 
             Texture2D enemyAvatarTexture = new Texture2D(serializeEnemy.Avatar.Height,serializeEnemy.Avatar.Width);
             Texture2D enemyBackgroundTexture = new Texture2D(serializeEnemy.Background.Height,serializeEnemy.Background.Width);
+            
             enemyAvatarTexture.LoadImage(serializeEnemy.Avatar.Encode);
             enemyBackgroundTexture.LoadImage(serializeEnemy.Background.Encode);
+            
             Sprite enemyAvatarSprite = Sprite.Create(enemyAvatarTexture,new Rect(0, 0, enemyAvatarTexture.width, enemyAvatarTexture.height), new Vector2(0.5f,0.5f));
             Sprite enemyBackgroundSprite = Sprite.Create(enemyBackgroundTexture,new Rect(0, 0, enemyBackgroundTexture.width, enemyBackgroundTexture.height), new Vector2(0.5f,0.5f));
 
@@ -99,19 +100,5 @@ public class EnemySaver : ISaveable, ILoadable, IInitializable
         }
 
         return enemies;
-    }
-
-    private List<EnemyData> FindAllEnemiesSOInstances()
-    {
-        string[] guids = AssetDatabase.FindAssets("t:"+ typeof(EnemyData).Name);
-        var enemyDataSOInstances = new List<EnemyData>(guids.Length);
-
-        for(int index = 0; index < guids.Length; index++)
-        {
-            string path = AssetDatabase.GUIDToAssetPath(guids[index]);
-            enemyDataSOInstances.Add(AssetDatabase.LoadAssetAtPath<EnemyData>(path));
-        }
-
-        return enemyDataSOInstances;
     }
 }
