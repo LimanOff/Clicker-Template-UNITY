@@ -40,13 +40,13 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
         _wasADShown = true;
 
         YandexGame.ErrorVideoEvent += () => _wasADShown = false;
-        YandexGame.OpenVideoEvent += UpgradeCounterMultiplierForAD;
+        YandexGame.CloseVideoEvent += UpgradeCounterMultiplierForAD;
     }
 
     private void OnDestroy()
     {
         YandexGame.ErrorVideoEvent -= () => _wasADShown = false;
-        YandexGame.OpenVideoEvent -= UpgradeCounterMultiplierForAD;
+        YandexGame.CloseVideoEvent -= UpgradeCounterMultiplierForAD;
     }
 
     public void UpgradeCounterMultiplier()
@@ -57,6 +57,7 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
             _counter.CountMultiplier *= 2;
             UpgradeCost *= 2;
 
+            _counter.CountChanged?.Invoke(_counter.Count);
             UpgradeCostChanged?.Invoke(UpgradeCost);
             CountMultiplierChanged?.Invoke(_counter.CountMultiplier);
             UpgradeHappened?.Invoke();
