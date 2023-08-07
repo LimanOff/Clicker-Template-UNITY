@@ -25,9 +25,9 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
     private Coroutine _timer;
     private Counter _counter;
 
-    [SerializeField] private Button _sender;
+    private Button _sender;
 
-    [SerializeField] private bool _wasADShown;
+    private bool _wasADShown;
 
     [Inject]
     private void Construct(Counter counter)
@@ -37,16 +37,20 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
 
     public void Initialize()
     {
-        _wasADShown = true;
-
         YandexGame.ErrorVideoEvent += () => _wasADShown = false;
-        YandexGame.CloseVideoEvent += UpgradeCounterMultiplierForAD;
+
+        YandexGame.CloseVideoEvent += () => UpgradeCounterMultiplierForAD();
+
+        YandexGame.RewardVideoEvent += (int id) => _wasADShown = true;
     }
 
     private void OnDestroy()
     {
         YandexGame.ErrorVideoEvent -= () => _wasADShown = false;
-        YandexGame.CloseVideoEvent -= UpgradeCounterMultiplierForAD;
+
+        YandexGame.CloseVideoEvent -= () => UpgradeCounterMultiplierForAD();
+
+        YandexGame.RewardVideoEvent -= (int id) => _wasADShown = true; 
     }
 
     public void UpgradeCounterMultiplier()
@@ -89,6 +93,7 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
             _timer = StartCoroutine(IncrementCounterMultiplierX20ForAWhile(() => SenderVisible(true)));
         }
 
+        _wasADShown = false;
         
         void SenderVisible(bool isInteractable)
         {
@@ -114,3 +119,4 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
         actionAfterCoroutine();
     }
 }
+
