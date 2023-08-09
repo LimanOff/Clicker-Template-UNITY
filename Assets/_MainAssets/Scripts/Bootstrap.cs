@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bootstrap : MonoBehaviour
 {
+    [Inject] private AutoSaver _autoSaver;
+
     [Inject] private CounterSaver _counterSaver;
     [Inject] private CounterUpgrader _counterUpgrader;
     [Inject] private CounterDisplay _counterDisplay;
@@ -11,6 +13,7 @@ public class Bootstrap : MonoBehaviour
     [Inject] private EnemyDisplay _enemyDisplay;
     [Inject] private EnemyKeeper _enemyKeeper;
     [Inject] private EnemySaver _enemySaver;
+
 
     private void Awake()
     {
@@ -30,7 +33,9 @@ public class Bootstrap : MonoBehaviour
     private void InitializeComponents()
     {
         InitializeCounter();
-        InitializeEnemy();        
+        InitializeEnemy();
+
+        _autoSaver.Initialize();
     }
 
     private void InitializeCounter()

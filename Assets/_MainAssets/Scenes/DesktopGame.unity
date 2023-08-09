@@ -526,6 +526,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &521786861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 521786862}
+  - component: {fileID: 521786863}
+  m_Layer: 0
+  m_Name: Autosaver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &521786862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521786861}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1614780266}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &521786863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521786861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13555dd1d4bf8b04cb391f769949671d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeSave: 5
 --- !u!1 &588683259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,8 +1297,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpgradeCost: 0
-  _sender: {fileID: 0}
-  _wasADShown: 0
 --- !u!114 &945050373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1631,6 +1674,7 @@ Transform:
   - {fileID: 945050371}
   - {fileID: 331350868}
   - {fileID: 332280801}
+  - {fileID: 521786862}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1959,6 +2003,7 @@ MonoBehaviour:
   _counterDisplayPrefab: {fileID: 945050373}
   _enemyGiverPrefab: {fileID: 331350869}
   _enemyDisplayPrefab: {fileID: 331350870}
+  _autoSaverPrefab: {fileID: 521786863}
 --- !u!1 &2039943281
 GameObject:
   m_ObjectHideFlags: 0
