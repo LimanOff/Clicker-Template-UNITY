@@ -21,6 +21,7 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
     public event DontHaveEnoughCountForUpgradeHandler DontHaveEnoughCountForUpgrade;
     
     public ulong UpgradeCost;
+    public bool IsAdUpgradeActive {get; private set;}
 
     private Coroutine _timer;
     private Counter _counter;
@@ -108,10 +109,14 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
 
         oldCountMultiplierValue = _counter.CountMultiplier;
         _counter.CountMultiplier *= 20;
+
+        IsAdUpgradeActive = true;
         
         CountMultiplierChanged?.Invoke(_counter.CountMultiplier);
 
         yield return new WaitForSeconds(seconds);
+
+        IsAdUpgradeActive = false;
 
         _counter.CountMultiplier = oldCountMultiplierValue;
 

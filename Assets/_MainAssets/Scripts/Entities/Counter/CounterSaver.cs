@@ -20,9 +20,15 @@ public class CounterSaver : ISaveable, ILoadable, IInitializable
 
     [ContextMenu("SaveData")]
     public void SaveData()
-    {
+    {   
         YandexGame.savesData.Count = _counter.Count;
-        YandexGame.savesData.CountMultiplier = _counter.CountMultiplier;
+
+        if((_counter.CountMultiplier > YandexGame.savesData.CountMultiplier) && !_counterUpgrader.IsAdUpgradeActive)
+        {
+            YandexGame.savesData.CountMultiplier = _counter.CountMultiplier;
+        }
+        
+        
         YandexGame.savesData.UpgradeCost = _counterUpgrader.UpgradeCost;
         
         YandexGame.SaveProgress();
