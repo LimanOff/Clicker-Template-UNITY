@@ -15,12 +15,17 @@ public class EntitiesInstaller : MonoInstaller
     [Space]
     [Header("AutoSaver")]
     [SerializeField] private AutoSaver _autoSaverPrefab;
+    [Space]
+    [Header("LeaderRecorder")]
+    [SerializeField] private LeaderRecorder _leaderRecorderPrefab;
 
     public override void InstallBindings()
     {
         BindSavers();
         BindCounter();
         BindEnemy();
+
+        Container.BindInstance(_leaderRecorderPrefab).AsSingle();
     }
 
     private void BindCounter()

@@ -34,7 +34,6 @@ public class Bootstrap : MonoBehaviour
     {
         InitializeCounter();
         InitializeEnemy();
-
         _autoSaver.Initialize();
     }
 

@@ -1,6 +1,7 @@
 using YG;
 using Zenject;
 using UnityEngine;
+
 public class CounterSaver : ISaveable, ILoadable, IInitializable
 {
     private Counter _counter;
@@ -27,7 +28,6 @@ public class CounterSaver : ISaveable, ILoadable, IInitializable
         {
             YandexGame.savesData.CountMultiplier = _counter.CountMultiplier;
         }
-        
         
         YandexGame.savesData.UpgradeCost = _counterUpgrader.UpgradeCost;
         

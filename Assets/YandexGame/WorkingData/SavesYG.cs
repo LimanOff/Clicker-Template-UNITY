@@ -13,6 +13,7 @@ namespace YG
 
         // Ваши сохранения
 
+        public ulong MaxCount;
         public ulong Count;
         public ulong CountMultiplier;
         public ulong UpgradeCost;

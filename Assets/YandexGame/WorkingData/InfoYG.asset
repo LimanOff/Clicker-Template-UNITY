@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scopes: 1
   playerPhotoSize: 0
-  leaderboardEnable: 0
+  leaderboardEnable: 1
   saveCloud: 1
   flush: 0
   localSaveSync: 1
