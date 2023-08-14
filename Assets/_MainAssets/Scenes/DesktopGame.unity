@@ -429,8 +429,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c40b3eda8bb946e4c905b37161c5e933, type: 2}
   - {fileID: 11400000, guid: db637112f9a360246a1867e6e75ac5b5, type: 2}
   - {fileID: 11400000, guid: 5e0b08184f1e0484e927259238f2fb66, type: 2}
-  - {fileID: 11400000, guid: 5e0b08184f1e0484e927259238f2fb66, type: 2}
-  - {fileID: 11400000, guid: 5e0b08184f1e0484e927259238f2fb66, type: 2}
+  <CountOfEnemies>k__BackingField: 0
 --- !u!114 &331350870
 MonoBehaviour:
   m_ObjectHideFlags: 0

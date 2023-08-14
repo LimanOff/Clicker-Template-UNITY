@@ -47,7 +47,7 @@ public class Bootstrap : MonoBehaviour
     private void InitializeEnemy()
     {
         _enemySaver.Initialize();
-        _enemyDisplay.Initialize();
         _enemyKeeper.Initialize();
+        _enemyDisplay.Initialize();
     }
 }

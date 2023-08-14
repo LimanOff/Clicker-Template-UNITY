@@ -1,3 +1,4 @@
+using YG;
 using Zenject;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,6 +36,12 @@ public class EnemyDisplay : MonoBehaviour, IInitializable
         _enemyKeeper.NoMoreEnemies += HideHealthSlider;
 
         EnemyKilled += GetEnemy;
+
+        if(YandexGame.savesData.IsGameWasFinished)
+        {
+            HideHealthSlider();
+            _enemyKeeper.NoMoreEnemies -= HideHealthSlider;
+        }
     }
 
     private void OnDestroy()

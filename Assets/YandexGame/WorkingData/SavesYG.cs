@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace YG
 {
-    [System.Serializable]
+    [Serializable]
     public class SavesYG
     {
         // "Технические сохранения" для работы плагина (Не удалять)
@@ -18,7 +18,7 @@ namespace YG
         public ulong CountMultiplier;
         public ulong UpgradeCost;
         public bool IsGameWasFinished;
-        public List<SerializableEnemy> Enemies;
+        public int CountOfEnemies;
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
         // Пока выявленное ограничение - это расширение массива
@@ -27,7 +27,7 @@ namespace YG
         // Вы можете выполнить какие то действия при загрузке сохранений
         public SavesYG()
         {
-
+            
         }
     }
 }

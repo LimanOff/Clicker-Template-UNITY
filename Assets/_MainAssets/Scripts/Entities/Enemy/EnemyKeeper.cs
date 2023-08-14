@@ -1,3 +1,4 @@
+using YG;
 using Zenject;
 using UnityEngine;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ public class EnemyKeeper : MonoBehaviour, IInitializable
     private EnemyDisplay _enemyDisplay;
 
     [SerializeField] private List<EnemyData> _enemies;
+    public int CountOfEnemies {get; private set;}
 
     [Inject]
     private void Construct(EnemyDisplay enemyDisplay)
@@ -40,22 +42,34 @@ public class EnemyKeeper : MonoBehaviour, IInitializable
 
     public EnemyData GetEnemy()
     {
-        EnemyData enemy = _enemies[0];
+        EnemyData enemy = _enemies[_enemies.Count-1];
         return enemy;            
     }
 
-    public List<EnemyData> GetAllEnemies() => _enemies;
-
-    public void SetEnemies(List<EnemyData> enemies)
+    public void SetEnemies(int CountOfEnemies)
     {
-        _enemies = enemies;
+        var enemiesCopy = new List<EnemyData>(CountOfEnemies);
+
+        for(int index = 0; index < enemiesCopy.Capacity; index++)
+        {
+            enemiesCopy.Add(_enemies[index]);
+        }
+
+        _enemies = enemiesCopy;
     }
 
     private void RemoveKilledEnemy()
     {
-        if(_enemies.Count != 0)
+        if(_enemies.Count != 1)
         {
-            _enemies.RemoveAt(0);
+            _enemies.RemoveAt(_enemies.Count-1);
+            CountOfEnemies = _enemies.Count;
+        }
+        else
+        {
+            YandexGame.savesData.IsGameWasFinished = true;
+            YandexGame.SaveProgress();
+            NoMoreEnemies?.Invoke();
         }
     }
 }

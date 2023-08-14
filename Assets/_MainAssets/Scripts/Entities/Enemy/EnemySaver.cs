@@ -1,104 +1,45 @@
+using System;
 using YG;
 using Zenject;
-using UnityEngine;
-using System.Collections.Generic;
 
 public class EnemySaver : ISaveable, ILoadable, IInitializable
 {
-    private List<EnemyData> _allEnemiesSO;
     private EnemyKeeper _enemyKeeper;
+    private EnemyDisplay _enemyDisplay;
 
     [Inject]
-    public EnemySaver(EnemyKeeper enemyKeeper)
+    public EnemySaver(EnemyKeeper enemyKeeper, EnemyDisplay enemyDisplay)
     {
         _enemyKeeper = enemyKeeper;
+        _enemyDisplay = enemyDisplay;
     }
 
     public void Initialize()
     {
+        _enemyDisplay.EnemyKilled += SaveData;
         LoadData();
+    }
+
+    ~EnemySaver()
+    {
+        _enemyDisplay.EnemyKilled -= SaveData;
     }
     
     public void SaveData()
     {
-        YandexGame.savesData.Enemies = SerializeEnemies(_enemyKeeper.GetAllEnemies());
+        if(_enemyKeeper.CountOfEnemies != 0)
+        {
+            YandexGame.savesData.CountOfEnemies = _enemyKeeper.CountOfEnemies;
 
-        YandexGame.SaveProgress();
+            YandexGame.SaveProgress();
+        }
     }
 
     public void LoadData()
     {
-        _allEnemiesSO = _enemyKeeper.GetAllEnemies();
-
-        if(YandexGame.savesData.Enemies != null)
+        if(YandexGame.savesData.CountOfEnemies != 0)
         {
-            _enemyKeeper.SetEnemies(DeserializeEnemies());
+            _enemyKeeper.SetEnemies(YandexGame.savesData.CountOfEnemies);
         }
-    }
-
-    private List<SerializableEnemy> SerializeEnemies(List<EnemyData> enemies)
-    {
-        var serializeEnemies = new List<SerializableEnemy>(enemies.Count);
-
-        for(int index = 0; index < serializeEnemies.Capacity; index++)
-        {
-            EnemyData enemyData = enemies[index];
-            Texture2D avatarTextureWithReadWriteAccess = enemyData.Avatar.texture.DuplicateTextureWithAllAccess();
-            Texture2D backgroundTextureWithReadWriteAcces = enemyData.Background.texture.DuplicateTextureWithAllAccess();
-
-            var avatar = new SerializableEnemy.EnemySprite(avatarTextureWithReadWriteAccess.EncodeToPNG(), enemyData.Avatar.texture.width, enemyData.Avatar.texture.height);
-            var background = new SerializableEnemy.EnemySprite(backgroundTextureWithReadWriteAcces.EncodeToPNG(), enemyData.Avatar.texture.width, enemyData.Avatar.texture.height);
-
-            var serializableEnemy = new SerializableEnemy
-            {
-                Name = enemyData.Name,
-                
-                Avatar = avatar,
-                Background = background,
-
-                MaxHealth = enemyData.MaxHealth,
-                Price = enemyData.Price
-            };
-            
-            serializeEnemies.Add(serializableEnemy);
-        }
-
-        return serializeEnemies;
-    }
-
-    private List<EnemyData> DeserializeEnemies()
-    {
-        List<SerializableEnemy> serializeEnemies = YandexGame.savesData.Enemies;
-
-        var enemies = new List<EnemyData>(serializeEnemies.Count);
-
-        for(int index = 0; index < enemies.Capacity; index++)
-        {
-            SerializableEnemy serializeEnemy = serializeEnemies[index];
-
-            Texture2D enemyAvatarTexture = new Texture2D(serializeEnemy.Avatar.Height,serializeEnemy.Avatar.Width);
-            Texture2D enemyBackgroundTexture = new Texture2D(serializeEnemy.Background.Height,serializeEnemy.Background.Width);
-            
-            enemyAvatarTexture.LoadImage(serializeEnemy.Avatar.Encode);
-            enemyBackgroundTexture.LoadImage(serializeEnemy.Background.Encode);
-            
-            Sprite enemyAvatarSprite = Sprite.Create(enemyAvatarTexture,new Rect(0, 0, enemyAvatarTexture.width, enemyAvatarTexture.height), new Vector2(0.5f,0.5f));
-            Sprite enemyBackgroundSprite = Sprite.Create(enemyBackgroundTexture,new Rect(0, 0, enemyBackgroundTexture.width, enemyBackgroundTexture.height), new Vector2(0.5f,0.5f));
-
-            EnemyData enemyData = new()
-            {
-                Name = serializeEnemy.Name,
-
-                Avatar = enemyAvatarSprite,
-                Background = enemyBackgroundSprite,                
-
-                MaxHealth = serializeEnemy.MaxHealth,
-                Price = serializeEnemy.Price
-            };
-
-            enemies.Add(_allEnemiesSO.Find(serializeEnemy => serializeEnemy.Name == enemyData.Name));
-        }
-
-        return enemies;
     }
 }
