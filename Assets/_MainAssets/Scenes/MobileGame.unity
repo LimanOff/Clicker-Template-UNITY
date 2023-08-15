@@ -970,6 +970,7 @@ GameObject:
   - component: {fileID: 427120377}
   - component: {fileID: 427120379}
   - component: {fileID: 427120378}
+  - component: {fileID: 427120380}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -1040,6 +1041,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427120376}
   m_CullTransparentMesh: 1
+--- !u!114 &427120380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427120376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textUIComponent: {fileID: 427120378}
+  textMeshComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C \u043A\u043B\u0438\u043A
+    X2"
+  en: Improve Click X2
+  tr: "T\u0131klama X2'yi \u0130yile\u015Ftirin"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: 
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: 
+  pt: 
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: 
+  hi: 
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 3/19 completed
+  componentTextField: 1
+  countLang: 3
 --- !u!1 &433521751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,6 +1753,7 @@ GameObject:
   - component: {fileID: 1385528619}
   - component: {fileID: 1385528621}
   - component: {fileID: 1385528620}
+  - component: {fileID: 1385528622}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -1772,6 +1824,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385528618}
   m_CullTransparentMesh: 1
+--- !u!114 &1385528622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385528618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textUIComponent: {fileID: 1385528620}
+  textMeshComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C \u043A\u043B\u0438\u043A
+    X20 \u0437\u0430 \u0440\u0435\u043A\u043B\u0430\u043C\u0443"
+  en: Improve click X20 for ads
+  tr: "Reklamlar i\xE7in t\u0131klama X20'yi iyile\u015Ftirin"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: 
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: 
+  pt: 
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: 
+  hi: 
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 3/19 completed
+  componentTextField: 1
+  countLang: 3
 --- !u!1 &1390968203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,6 +2000,7 @@ GameObject:
   - component: {fileID: 1471850798}
   - component: {fileID: 1471850800}
   - component: {fileID: 1471850799}
+  - component: {fileID: 1471850801}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -1967,6 +2070,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471850797}
   m_CullTransparentMesh: 1
+--- !u!114 &1471850801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471850797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textUIComponent: {fileID: 1471850799}
+  textMeshComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041A\u0442\u043E \u043B\u0443\u0447\u0448\u0435 \u043C\u0435\u043D\u044F?"
+  en: Who is better than me?
+  tr: Benden daha iyi kim var?
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: 
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: 
+  pt: 
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: 
+  hi: 
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 3/19 completed
+  componentTextField: 1
+  countLang: 3
 --- !u!1 &1483936583
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,6 +2658,7 @@ GameObject:
   - component: {fileID: 1731116947}
   - component: {fileID: 1731116948}
   - component: {fileID: 1731116949}
+  - component: {fileID: 1731116950}
   m_Layer: 5
   m_Name: CounterText
   m_TagString: Untagged
@@ -2575,6 +2728,55 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Undefined
+--- !u!114 &1731116950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731116946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textUIComponent: {fileID: 1731116949}
+  textMeshComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u041D\u0435\u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u044B\u0439"
+  en: Undefined
+  tr: "Tan\u0131ms\u0131z"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: 
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: 
+  pt: 
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: 
+  hi: 
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 3/19 completed
+  componentTextField: 1
+  countLang: 3
 --- !u!1 &1779607822
 GameObject:
   m_ObjectHideFlags: 0
