@@ -20,7 +20,7 @@ public class LeaderRecorder : MonoBehaviour
         while(true)
         {
             SaveLeaderboard();
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
         }
 	}
 
@@ -32,6 +32,10 @@ public class LeaderRecorder : MonoBehaviour
             YandexGame.NewLeaderboardScores(LeaderboardName, (int)_counter.Count);
             Debug.Log($"Данные отправлены в лидерборд: {LeaderboardName}");
             YandexGame.SaveProgress();
+        }
+        else
+        {
+            Debug.Log($"Самое большое количество очков набитое вами - {YandexGame.savesData.MaxCount}, а вы набили - {_counter.Count}. Данные не были отправлены в лидерборд");
         }
     }
 }
