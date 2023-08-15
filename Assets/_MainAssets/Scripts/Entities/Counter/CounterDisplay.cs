@@ -17,10 +17,10 @@ public class CounterDisplay : MonoBehaviour, IInitializable
 
     public void UpdateDisplayCounter(ulong count)
     {
-        _displayCounter.text = GetFormatCount(count);
+        _displayCounter.text = GetFormatText(count);
     }
 
-    private string GetFormatCount(float number)
+    public static string GetFormatText(float number)
     {
         string output;
         ulong[] thresholds = {(ulong)1e3, (ulong)1e6, (ulong)1e9,(ulong)1e11,(ulong)1e14};

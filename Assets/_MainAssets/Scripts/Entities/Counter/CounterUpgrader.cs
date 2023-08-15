@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-[RequireComponent(typeof(Counter))]
 public class CounterUpgrader : MonoBehaviour, IInitializable
 {
     public delegate void UpgradeCostChangedHandler(ulong upgradeCost);
@@ -25,8 +24,10 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
 
     private Coroutine _timer;
     private Counter _counter;
+    private CounterDisplay _counterDisplay;
 
     [SerializeField] private Button _sender;
+    [SerializeField] private Text _priceToUpgrade;
 
     private bool _wasADShown;
 
@@ -51,11 +52,13 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
 
         YandexGame.CloseVideoEvent -= () => UpgradeCounterMultiplierForAD();
 
-        YandexGame.RewardVideoEvent -= (int id) => _wasADShown = true; 
+        YandexGame.RewardVideoEvent -= (int id) => _wasADShown = true;
     }
 
     private void Update()
     {
+        _priceToUpgrade.text = $"Цена: {CounterDisplay.GetFormatText(UpgradeCost)}";
+
         if(_counter.Count < UpgradeCost)
         {
             _sender.interactable = false;
@@ -85,9 +88,8 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
         }
     }
 
-    public void CashButtonAndShowAD(Button sender)
+    public void RequestAD()
     {
-        _sender = sender;
         YandexGame.RewVideoShow(0);
     }
 
