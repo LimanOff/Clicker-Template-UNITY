@@ -26,7 +26,7 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
     private Coroutine _timer;
     private Counter _counter;
 
-    private Button _sender;
+    [SerializeField] private Button _sender;
 
     private bool _wasADShown;
 
@@ -52,6 +52,18 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
         YandexGame.CloseVideoEvent -= () => UpgradeCounterMultiplierForAD();
 
         YandexGame.RewardVideoEvent -= (int id) => _wasADShown = true; 
+    }
+
+    private void Update()
+    {
+        if(_counter.Count < UpgradeCost)
+        {
+            _sender.interactable = false;
+        }
+        else
+        {
+            _sender.interactable = true;
+        }
     }
 
     public void UpgradeCounterMultiplier()
