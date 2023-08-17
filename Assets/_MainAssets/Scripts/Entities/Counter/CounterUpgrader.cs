@@ -57,7 +57,7 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
 
     private void Update()
     {
-        _priceToUpgrade.text = $"Цена: {CounterDisplay.GetFormatText(UpgradeCost)}";
+        _priceToUpgrade.text = CounterDisplay.GetFormatText(UpgradeCost);
 
         if(_counter.Count < UpgradeCost)
         {
