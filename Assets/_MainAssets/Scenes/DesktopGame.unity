@@ -720,7 +720,7 @@ RectTransform:
   m_GameObject: {fileID: 588683259}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7348, y: 0.7348, z: 0.7348}
+  m_LocalScale: {x: 2.07, y: 2.2, z: 0.7348}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2110753810}
@@ -728,7 +728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.0482178, y: -67}
+  m_AnchoredPosition: {x: -3.0482178, y: -277.6}
   m_SizeDelta: {x: 466.634, y: 466.634}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &588683261
@@ -820,8 +820,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -869,7 +869,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 678331760}
-  m_Father: {fileID: 1150581262}
+  m_Father: {fileID: 934190063}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -1639,6 +1639,7 @@ RectTransform:
   - {fileID: 1150581262}
   - {fileID: 787399791}
   - {fileID: 2110753810}
+  - {fileID: 591359344}
   m_Father: {fileID: 129087274}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2008,7 +2009,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1700941320}
-  - {fileID: 591359344}
   m_Father: {fileID: 934190063}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2185,7 +2185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4faa5c0aa646a9b4e89f96e0443ffdd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeaderboardName: PointScoredRifenGames
+  LeaderboardName: PointScoredSCPClicker
 --- !u!1 &1431604681
 GameObject:
   m_ObjectHideFlags: 0
@@ -2589,7 +2589,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 945050372}
         m_TargetAssemblyTypeName: CounterUpgrader, Assembly-CSharp
-        m_MethodName: CashButtonAndShowAD
+        m_MethodName: RequestAD
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1906245131}
@@ -2782,7 +2782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7149767997760337934, guid: ae8f43d803bab62468bf1646ea8bcf7a, type: 3}
       propertyPath: nameLB
-      value: PointScoredRifenGames
+      value: PointScoredSCPClicker
       objectReference: {fileID: 0}
     - target: {fileID: 7149767997760337934, guid: ae8f43d803bab62468bf1646ea8bcf7a, type: 3}
       propertyPath: advanced

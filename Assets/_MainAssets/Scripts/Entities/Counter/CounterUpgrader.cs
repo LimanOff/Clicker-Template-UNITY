@@ -27,6 +27,7 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
     private CounterDisplay _counterDisplay;
 
     [SerializeField] private Button _sender;
+    private Button _senderAD;
     [SerializeField] private Text _priceToUpgrade;
 
     private bool _wasADShown;
@@ -41,18 +42,22 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
     {
         YandexGame.ErrorVideoEvent += () => _wasADShown = false;
 
-        YandexGame.CloseVideoEvent += () => UpgradeCounterMultiplierForAD();
-
-        YandexGame.RewardVideoEvent += (int id) => _wasADShown = true;
+        YandexGame.RewardVideoEvent += (int id) => 
+        {
+            _wasADShown = true;
+            UpgradeCounterMultiplierForAD(_senderAD);
+        };
     }
 
     private void OnDestroy()
     {
         YandexGame.ErrorVideoEvent -= () => _wasADShown = false;
 
-        YandexGame.CloseVideoEvent -= () => UpgradeCounterMultiplierForAD();
-
-        YandexGame.RewardVideoEvent -= (int id) => _wasADShown = true;
+        YandexGame.RewardVideoEvent -= (int id) => 
+        {
+            _wasADShown = true;
+            UpgradeCounterMultiplierForAD(_senderAD);
+        };
     }
 
     private void Update()
@@ -88,12 +93,13 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
         }
     }
 
-    public void RequestAD()
+    public void RequestAD(Button senderAD)
     {
         YandexGame.RewVideoShow(0);
+        _senderAD = senderAD;
     }
 
-    private void UpgradeCounterMultiplierForAD()
+    private void UpgradeCounterMultiplierForAD(Button sender)
     {        
         if(_timer != null)
         {
@@ -112,16 +118,14 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
         
         void SenderVisible(bool isInteractable)
         {
-            _sender.interactable = isInteractable;
+            sender.interactable = isInteractable;
         }
     }
 
     private IEnumerator IncrementCounterMultiplierX20ForAWhile(Action actionAfterCoroutine)
     {
         int seconds = 20;
-        ulong oldCountMultiplierValue;
 
-        oldCountMultiplierValue = _counter.CountMultiplier;
         _counter.CountMultiplier *= 20;
 
         IsAdUpgradeActive = true;
@@ -132,7 +136,7 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
 
         IsAdUpgradeActive = false;
 
-        _counter.CountMultiplier = oldCountMultiplierValue;
+        _counter.CountMultiplier /= 20;
 
         CountMultiplierChanged?.Invoke(_counter.CountMultiplier);
         actionAfterCoroutine();
