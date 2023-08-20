@@ -2028,6 +2028,7 @@ GameObject:
   - component: {fileID: 1167286812}
   - component: {fileID: 1167286814}
   - component: {fileID: 1167286813}
+  - component: {fileID: 1167286815}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -2097,6 +2098,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167286811}
   m_CullTransparentMesh: 1
+--- !u!114 &1167286815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167286811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textUIComponent: {fileID: 1167286813}
+  textMeshComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"
+  ru: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"
+  en: close
+  tr: "kapal\u0131"
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: 
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: 
+  pt: 
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: 
+  hi: 
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 3/3 completed
+  componentTextField: 0
+  countLang: 3
 --- !u!1 &1288984571
 GameObject:
   m_ObjectHideFlags: 0
