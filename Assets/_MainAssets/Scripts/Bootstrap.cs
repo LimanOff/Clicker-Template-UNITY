@@ -14,6 +14,8 @@ public class Bootstrap : MonoBehaviour
     [Inject] private EnemyKeeper _enemyKeeper;
     [Inject] private EnemySaver _enemySaver;
 
+    [Inject] private WinHandler _winHandler;
+
 
     private void Awake()
     {
@@ -32,6 +34,7 @@ public class Bootstrap : MonoBehaviour
 
     private void InitializeComponents()
     {
+        _winHandler.Initialize();
         InitializeCounter();
         InitializeEnemy();
         _autoSaver.Initialize();
