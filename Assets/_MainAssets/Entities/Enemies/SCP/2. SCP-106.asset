@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a0c5738d82380418b7c610d9f64863, type: 3}
+  m_Name: 2. SCP-106
+  m_EditorClassIdentifier: 
+  Name: 
+  Avatar: {fileID: 21300000, guid: 1473291b3e09de649b7f37501769dad3, type: 3}
+  Background: {fileID: 21300000, guid: 21f545426900e924a874092ffe003c89, type: 3}
+  MaxHealth: 1500000
+  Price: 0

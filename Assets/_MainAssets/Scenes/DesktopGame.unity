@@ -427,9 +427,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemies:
-  - {fileID: 11400000, guid: c40b3eda8bb946e4c905b37161c5e933, type: 2}
-  - {fileID: 11400000, guid: db637112f9a360246a1867e6e75ac5b5, type: 2}
-  - {fileID: 11400000, guid: 5e0b08184f1e0484e927259238f2fb66, type: 2}
+  - {fileID: 11400000, guid: 48b57b315bbddb145ba2447024609ad2, type: 2}
+  - {fileID: 11400000, guid: 79647de2b52da0a49bb418ebc1112c32, type: 2}
+  - {fileID: 11400000, guid: 9e62ec8ddec54d24496bd8526f4840d3, type: 2}
+  - {fileID: 11400000, guid: 00fd313f78f89a84b8c7ac53cb9edade, type: 2}
+  - {fileID: 11400000, guid: 15442deaa8dae8240babdf6138395505, type: 2}
 --- !u!114 &331350870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2578,7 +2580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4faa5c0aa646a9b4e89f96e0443ffdd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeaderboardName: PointScoredSCPClicker
+  LeaderboardName: PointScoredSCP
 --- !u!1 &1431604681
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,6 +2972,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619744414}
   m_CullTransparentMesh: 1
+--- !u!1001 &1690453503
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3551263272813574047, guid: 73d73af16b5f6f14c9c3004480a1bae2, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551263272813574047, guid: 73d73af16b5f6f14c9c3004480a1bae2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551263272813574047, guid: 73d73af16b5f6f14c9c3004480a1bae2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551263272813574047, guid: 73d73af16b5f6f14c9c3004480a1bae2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551263272813574047, guid: 73d73af16b5f6f14c9c3004480a1bae2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551263272813574047, guid: 73d73af16b5f6f14c9c3004480a1bae2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551263272813574047, guid: 73d73af16b5f6f14c9c3004480a1bae2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551263272813574047, guid: 73d73af16b5f6f14c9c3004480a1bae2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551263272813574047, guid: 73d73af16b5f6f14c9c3004480a1bae2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551263272813574047, guid: 73d73af16b5f6f14c9c3004480a1bae2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551263272813574047, guid: 73d73af16b5f6f14c9c3004480a1bae2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821258370851224048, guid: 73d73af16b5f6f14c9c3004480a1bae2, type: 3}
+      propertyPath: m_Name
+      value: ScreenshotMaker
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821258370851224048, guid: 73d73af16b5f6f14c9c3004480a1bae2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73d73af16b5f6f14c9c3004480a1bae2, type: 3}
 --- !u!1 &1700941319
 GameObject:
   m_ObjectHideFlags: 0
@@ -3443,7 +3510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7149767997760337934, guid: ae8f43d803bab62468bf1646ea8bcf7a, type: 3}
       propertyPath: nameLB
-      value: PointScoredSCPClicker
+      value: PointScoredSCP
       objectReference: {fileID: 0}
     - target: {fileID: 7149767997760337934, guid: ae8f43d803bab62468bf1646ea8bcf7a, type: 3}
       propertyPath: advanced

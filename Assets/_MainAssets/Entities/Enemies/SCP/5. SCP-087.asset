@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68a0c5738d82380418b7c610d9f64863, type: 3}
-  m_Name: MisterY
+  m_Name: 5. SCP-087
   m_EditorClassIdentifier: 
-  Name: MisterY
-  Avatar: {fileID: 21300000, guid: 950832395ec754ba48ab1cffa214cec0, type: 3}
-  Background: {fileID: 21300000, guid: 20fa79ba90ba5f040b39cd1aaae25e19, type: 3}
-  MaxHealth: 1000
+  Name: 
+  Avatar: {fileID: 21300000, guid: 2fc37d0492465b041a3b3303242e74f5, type: 3}
+  Background: {fileID: 21300000, guid: 18cca972248525143bfb493c7656f99f, type: 3}
+  MaxHealth: 15000000000
   Price: 0
