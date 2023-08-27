@@ -45,8 +45,9 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
         YandexGame.RewardVideoEvent += (int id) => 
         {
             _wasADShown = true;
-            UpgradeCounterMultiplierForAD(_senderAD);
         };
+
+        YandexGame.CloseVideoEvent += () => UpgradeCounterMultiplierForAD(_senderAD);
     }
 
     private void OnDestroy()
@@ -56,8 +57,9 @@ public class CounterUpgrader : MonoBehaviour, IInitializable
         YandexGame.RewardVideoEvent -= (int id) => 
         {
             _wasADShown = true;
-            UpgradeCounterMultiplierForAD(_senderAD);
         };
+
+        YandexGame.CloseVideoEvent -= () => UpgradeCounterMultiplierForAD(_senderAD);
     }
 
     private void Update()
