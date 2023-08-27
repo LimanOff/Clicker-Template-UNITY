@@ -75,3 +75,4 @@ crashlytics-build.properties
 # GPG Public Keys
 *.asc
 *.pub
+Assets/YandexGame/WorkingData/saveyg.yg

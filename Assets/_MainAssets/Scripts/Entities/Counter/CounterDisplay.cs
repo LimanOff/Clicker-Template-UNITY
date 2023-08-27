@@ -29,7 +29,7 @@ public class CounterDisplay : MonoBehaviour, IInitializable
 
 	    if(number < thresholds[0])
         {
-         return number.ToString();
+         return $"{number.ToString()} $";
         }
 
         for(int index = 0; index < thresholds.Length; index++)
@@ -40,10 +40,10 @@ public class CounterDisplay : MonoBehaviour, IInitializable
             {
                 number /= thresholds[index];
                 output = string.Format("{0:#.00}",Mathf.Floor(number * 100) / 100) + thresholds_suffixes[index];
-                return output;
+                return $"{output} $";
             }
         }
 
-	    return number.ToString();
+	    return $"{number.ToString()} $";
     }
 }

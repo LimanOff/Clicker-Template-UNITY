@@ -18,9 +18,9 @@ public class ClickTween : MonoBehaviour
     {
         _seq = DOTween.Sequence();   
         
-        if(ObjForShaking.localScale != Vector3.one)
+        if(ObjForShaking.localScale != _startSize)
         {
-            _seq.Prepend(ObjForShaking.DOScale(Vector3.one,.1f));
+            _seq.Prepend(ObjForShaking.DOScale(_startSize,.1f));
         }
 
         _seq.Append(ObjForShaking.DOShakeScale(1f,.5f,8,50,true,ShakeRandomnessMode.Harmonic)).SetEase(ease)

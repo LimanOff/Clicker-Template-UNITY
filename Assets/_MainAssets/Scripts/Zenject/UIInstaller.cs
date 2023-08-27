@@ -7,6 +7,7 @@ public class UIInstaller : MonoInstaller
     [Header("Panels")]
     [SerializeField] private GameObject _gamePanelPrefab;
     [SerializeField] private GameObject _leaderboardPanelPrefab;
+    [SerializeField] private GameObject _winPanelPrefab;
 
     [Header("GamePanel")]
     [SerializeField] private Text _counterTextPrefab;
@@ -41,6 +42,7 @@ public class UIInstaller : MonoInstaller
     {
         Container.BindInstance(_gamePanelPrefab).WithId("Panels/GamePanel");
         Container.BindInstance(_leaderboardPanelPrefab).WithId("Panels/LeaderboardPanel");
+        Container.BindInstance(_winPanelPrefab).WithId("Panels/WinPanel");
     }
 
     private void BindImages()

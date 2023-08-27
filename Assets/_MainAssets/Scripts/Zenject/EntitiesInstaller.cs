@@ -21,6 +21,8 @@ public class EntitiesInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        Container.Bind<WinHandler>().AsSingle();
+        
         BindSavers();
         BindCounter();
         BindEnemy();
