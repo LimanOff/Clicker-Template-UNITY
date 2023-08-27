@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a0c5738d82380418b7c610d9f64863, type: 3}
+  m_Name: 1. BanbanDefault
+  m_EditorClassIdentifier: 
+  Name: 
+  Avatar: {fileID: 21300000, guid: 6617364dad05faf4bbe34d469b5405dc, type: 3}
+  Background: {fileID: 21300000, guid: 82b5a44ba57045541a51146a05b6f73c, type: 3}
+  MaxHealth: 10000
+  Price: 0
