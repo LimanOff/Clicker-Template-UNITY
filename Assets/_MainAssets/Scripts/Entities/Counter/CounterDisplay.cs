@@ -27,16 +27,16 @@ public class CounterDisplay : MonoBehaviour, IInitializable
         string output;
         ulong[] thresholds = {(ulong)1e3, (ulong)1e6, (ulong)1e9,(ulong)1e11,(ulong)1e14};
 
-        List<string> thresholds_suffixes = new List<string>(5);
+        List<string> thresholds_suffixes = new List<string>(1);
 
         if(YandexGame.EnvironmentData.language == "ru")
         {
-            string[] RUsuffixes = {"тыс", "млн", "млр", "трлн", "квин"};
+            string[] RUsuffixes = {"тыс", "млн", "млр", "трлн", "квин", "сек", "сеп", "окт", "нон", "дец", "унд", "дуо"};
             thresholds_suffixes.AddRange(RUsuffixes);
         }
         else
         {
-            string[] ENGsuffixes = {"K", "M" ,"B" ,"T" ,"Q"};
+            string[] ENGsuffixes = {"K", "M" ,"B" ,"T" ,"Q", "Sec", "Sep", "Oct", "Non", "Dec", "Und", "Duo"};
             thresholds_suffixes.AddRange(ENGsuffixes);
         }
 
