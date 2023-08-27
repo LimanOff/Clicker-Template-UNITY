@@ -1,6 +1,8 @@
+using YG;
 using Zenject;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class CounterDisplay : MonoBehaviour, IInitializable
 {
@@ -24,12 +26,24 @@ public class CounterDisplay : MonoBehaviour, IInitializable
     {
         string output;
         ulong[] thresholds = {(ulong)1e3, (ulong)1e6, (ulong)1e9,(ulong)1e11,(ulong)1e14};
-        char[] thresholds_suffixes = {'K','M','B','T','Q'};
+
+        List<string> thresholds_suffixes = new List<string>(5);
+
+        if(YandexGame.EnvironmentData.language == "ru")
+        {
+            string[] RUsuffixes = {"тыс", "млн", "млр", "трлн", "квин"};
+            thresholds_suffixes.AddRange(RUsuffixes);
+        }
+        else
+        {
+            string[] ENGsuffixes = {"K", "M" ,"B" ,"T" ,"Q"};
+            thresholds_suffixes.AddRange(ENGsuffixes);
+        }
 
 
 	    if(number < thresholds[0])
         {
-         return $"{number.ToString()} $";
+         return $"{number} $";
         }
 
         for(int index = 0; index < thresholds.Length; index++)
