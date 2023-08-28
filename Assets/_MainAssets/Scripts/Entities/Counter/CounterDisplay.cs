@@ -25,9 +25,9 @@ public class CounterDisplay : MonoBehaviour, IInitializable
     public static string GetFormatText(float number)
     {
         string output;
-        ulong[] thresholds = {(ulong)1e3, (ulong)1e6, (ulong)1e9,(ulong)1e11,(ulong)1e14};
+        nuint[] thresholds = {(nuint)1e3, (nuint)1e6, (nuint)1e9,(nuint)1e11,(nuint)1e14,(nuint)1e17};
 
-        List<string> thresholds_suffixes = new List<string>(1);
+        List<string> thresholds_suffixes = new List<string>(6);
 
         if(YandexGame.EnvironmentData.language == "ru")
         {
