@@ -7,7 +7,14 @@ public class Counter : MonoBehaviour
 
     [SerializeField] public ulong Count;
 
-    [SerializeField] public ulong CountMultiplier;
+    private ulong _countMultiplier;
+ 
+    public ulong CountMultiplier
+    {
+        get => _countMultiplier;
+
+        set { _countMultiplier = value > 0 ? value : (ulong)1e15;}
+    }
 
     public void IncrementCounter()
     {
